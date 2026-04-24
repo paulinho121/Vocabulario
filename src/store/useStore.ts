@@ -95,7 +95,7 @@ export const useStore = create<AppState>()(
             .slice(0, 5); // Max 5 reviews per session
 
           // 2. Fetch new words from Gemini if needed
-          const totalTarget = 20;
+          const totalTarget = 10;
           const neededNewCount = totalTarget - dueReviews.length;
           let newWords: Word[] = [];
           let story: Story | null = null;

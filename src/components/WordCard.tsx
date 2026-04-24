@@ -64,7 +64,7 @@ export default function WordCard({ word, isFavorite, onToggleFavorite, lang }: W
              </span>
           </div>
           
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 mb-6 sm:mb-8 leading-tight px-4 break-words w-full">
+          <h2 className={`font-black tracking-tight text-slate-900 mb-6 sm:mb-8 leading-tight px-4 text-center w-full break-words ${word.word.length > 12 ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-5xl md:text-6xl'}`}>
             {word.word}
           </h2>
 
