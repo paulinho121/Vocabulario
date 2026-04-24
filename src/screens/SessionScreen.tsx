@@ -52,11 +52,30 @@ export default function SessionScreen({ onComplete }: { onComplete: () => void }
     });
   }, [dailyWords, targetLanguage]);
 
-  if (dailyWords.length === 0) {
+  if (dailyWords.length === 0 && !isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center p-8 h-full text-center">
-        <h2 className="text-2xl font-bold mb-4">No words today!</h2>
-        <button onClick={onComplete} className="px-6 py-3 bg-blue-500 text-white rounded-xl font-semibold">Go Home</button>
+      <div className="flex flex-col items-center justify-center p-8 h-full text-center bg-slate-50">
+        <div className="w-20 h-20 bg-indigo-50 rounded-3xl flex items-center justify-center mb-6">
+           <Brain className="w-10 h-10 text-indigo-400 opacity-40" />
+        </div>
+        <h2 className="text-2xl font-black text-slate-800 mb-2">No words today!</h2>
+        <p className="text-slate-400 text-sm font-medium mb-8 max-w-[200px]">
+          We couldn't load your session. Check your internet or try again.
+        </p>
+        <div className="flex flex-col gap-3 w-full max-w-[240px]">
+          <button 
+            onClick={() => useStore.getState().generateDailySession()}
+            className="px-6 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-100 active:scale-95 transition-all"
+          >
+            Retry Loading
+          </button>
+          <button 
+            onClick={onComplete} 
+            className="px-6 py-4 bg-white text-slate-400 rounded-2xl font-bold border border-slate-100"
+          >
+            Go Home
+          </button>
+        </div>
       </div>
     );
   }

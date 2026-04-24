@@ -69,7 +69,12 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
         {!isDailyComplete && (
           <button 
             disabled={isLoading}
-            onClick={onStartSession}
+            onClick={async () => {
+              if (dailyWords.length === 0) {
+                await generateDailySession();
+              }
+              onStartSession();
+            }}
             className={`w-full mt-4 rounded-2xl py-4 font-bold text-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.98] ${isLoading ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-slate-900 hover:bg-slate-800 text-white shadow-lg'}`}
           >
             {isLoading ? (
