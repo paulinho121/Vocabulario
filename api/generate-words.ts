@@ -44,8 +44,8 @@ export default async function handler(req: any, res: any) {
     const prompt = `
       You are a high-level language professor. Generate a JSON object for an INTERMEDIATE (B2 LEVEL) vocabulary session.
       Requirements:
-      1. "words": 10 sophisticated vocabulary words for learning ${language} with the theme "${theme}". 
-      2. "story": A cohesive story using all 10 words.
+      1. "words": 20 sophisticated vocabulary words for learning ${language} with the theme "${theme}". 
+      2. "story": A cohesive story using ALL 20 words.
       Word Structure: { "id": "...", "word": "...", "translation": "...", "partOfSpeech": "...", "theme": "${theme}", "sentences": { "present": "...", "past": "...", "future": "..." } }
       Return ONLY raw JSON.
     `;
@@ -66,7 +66,7 @@ export default async function handler(req: any, res: any) {
       school: [{ word: 'Curriculum', translation: 'Currículo' }, { word: 'Erudition', translation: 'Erudição' }]
     };
 
-    const selectedList = (fallbacks[theme as string] || fallbacks.work).slice(0, 10);
+    const selectedList = (fallbacks[theme as string] || fallbacks.work).slice(0, 20);
     
     return res.status(200).json({
       words: selectedList.map((item: any, idx: number) => ({
