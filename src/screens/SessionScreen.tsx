@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { translations } from '../translations';
 
 export default function SessionScreen({ onComplete }: { onComplete: () => void }) {
-  const { dailyWords, dailyStory, dailyProgress, markWordLearned, targetLanguage } = useStore();
+  const { dailyWords, dailyStory, dailyProgress, markWordLearned, targetLanguage, isLoading } = useStore();
   
   const [localFavorite, setLocalFavorite] = useState(false);
   const [sessionStep, setSessionStep] = useState<'cards' | 'story' | 'quiz' | 'finished'>('cards');
