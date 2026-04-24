@@ -15,9 +15,9 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
   const progressPercent = (dailyProgress / totalWordsToday) * 100;
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 px-6 py-8">
-      {/* Header */}
-      <header className="flex justify-between items-center mb-8">
+    <div className="flex flex-col h-full bg-slate-50 px-6 py-8 overflow-y-auto">
+      {/* ... existing header ... */}
+      <header className="flex justify-between items-center mb-8 shrink-0">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-xl font-bold text-blue-600">
             {targetLanguage.toUpperCase()}
@@ -42,7 +42,7 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
       </header>
 
       {/* Hero / Daily Status */}
-      <div className="bg-white rounded-[24px] border border-slate-200 p-6 shadow-sm mb-8">
+      <div className="bg-white rounded-[24px] border border-slate-200 p-6 shadow-sm mb-8 shrink-0">
         <h2 className="text-2xl font-extrabold tracking-tight text-slate-800 mb-2">
           {isDailyComplete ? t.completed : t.readyToLearn}
         </h2>
@@ -102,8 +102,8 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
       </div>
 
       {/* Themes or Stats Preview */}
-      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 px-2">{t.themes}</h3>
-      <div className="grid grid-cols-2 gap-4">
+      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 px-2 shrink-0">{t.themes}</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-8">
          {[
            { id: 'travel', label: t.travel },
            { id: 'work', label: t.work },
@@ -116,12 +116,12 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
                 setTargetTheme(theme.id);
                 generateDailySession();
              }}
-             className={`bg-white p-5 rounded-[24px] border-2 shadow-sm flex flex-col justify-between aspect-square text-left transition-all hover:scale-[1.02] active:scale-[0.98] ${targetTheme === theme.id ? 'border-indigo-500 ring-4 ring-indigo-50' : 'border-slate-200'}`}
+             className={`bg-white p-5 rounded-[24px] border-2 shadow-sm flex items-center gap-4 text-left transition-all hover:scale-[1.02] active:scale-[0.98] ${targetTheme === theme.id ? 'border-indigo-500 ring-4 ring-indigo-50' : 'border-slate-200'}`}
            >
-             <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${i===0 ? 'bg-indigo-50 text-indigo-600' : i===1 ? 'bg-purple-50 text-purple-600' : i===2 ? 'bg-orange-50 text-orange-600' : 'bg-emerald-50 text-emerald-600'}`}>
-                <Languages className="w-5 h-5" />
+             <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center ${i===0 ? 'bg-indigo-50 text-indigo-600' : i===1 ? 'bg-purple-50 text-purple-600' : i===2 ? 'bg-orange-50 text-orange-600' : 'bg-emerald-50 text-emerald-600'}`}>
+                <Languages className="w-6 h-6" />
               </div>
-             <span className="font-bold text-slate-800">{theme.label}</span>
+             <span className="font-bold text-slate-800 text-lg">{theme.label}</span>
            </button>
          ))}
       </div>

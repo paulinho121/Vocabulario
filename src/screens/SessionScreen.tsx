@@ -203,39 +203,39 @@ export default function SessionScreen({ onComplete }: { onComplete: () => void }
 
   // Cards Step
   return (
-    <div className="flex flex-col h-full bg-slate-50 px-6 py-6 pb-24 relative overflow-hidden">
+    <div className="flex flex-col h-full bg-slate-50 px-6 py-4 sm:py-6 pb-24 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-indigo-100/30 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-slate-200/40 rounded-full blur-3xl -z-10" />
 
       {/* Top Bar */}
-      <div className="flex justify-between items-center mb-8">
-        <button onClick={onComplete} className="p-2.5 bg-white rounded-full shadow-sm text-slate-400 hover:text-indigo-600 border border-slate-100 transition-colors">
+      <div className="flex justify-between items-center mb-4 sm:mb-8 shrink-0">
+        <button onClick={onComplete} className="p-2 sm:p-2.5 bg-white rounded-full shadow-sm text-slate-400 hover:text-indigo-600 border border-slate-100 transition-colors">
           <X className="w-5 h-5" />
         </button>
-        <div className="flex gap-1.5 flex-1 mx-6 justify-center">
+        <div className="flex gap-1 sm:gap-1.5 flex-1 mx-4 sm:mx-6 justify-center">
           {dailyWords.map((w, idx) => (
             <div 
               key={w.id} 
-              className={`h-1.5 flex-1 max-w-[24px] rounded-full transition-all duration-500 ${idx < dailyProgress ? 'bg-indigo-600' : idx === browserIndex ? 'bg-indigo-300' : 'bg-slate-200'}`} 
+              className={`h-1 sm:h-1.5 flex-1 max-w-[20px] sm:max-w-[24px] rounded-full transition-all duration-500 ${idx < dailyProgress ? 'bg-indigo-600' : idx === browserIndex ? 'bg-indigo-300' : 'bg-slate-200'}`} 
             />
           ))}
         </div>
-        <div className="w-10"></div>
+        <div className="w-9 sm:w-10"></div>
       </div>
 
       {/* Card Area */}
-      <div className="flex-1 flex flex-col items-center justify-center relative">
-        <div className="w-full flex items-center gap-4 relative">
+      <div className="flex-1 flex flex-col items-center justify-center relative min-h-0">
+        <div className="w-full flex items-center gap-2 sm:gap-4 relative">
           <button 
             onClick={() => setBrowserIndex(i => Math.max(0, i - 1))}
             disabled={browserIndex === 0}
-            className="w-12 h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-slate-400 hover:text-indigo-600 disabled:opacity-20 transition-all active:scale-90 border border-white z-10"
+            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-slate-400 hover:text-indigo-600 disabled:opacity-10 transition-all active:scale-90 border border-white z-10 shrink-0"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
-          <div className="flex-1 max-w-[340px]">
+          <div className="flex-1 max-w-[340px] min-w-0">
             <AnimatePresence mode="popLayout">
               {dailyWords[browserIndex] ? (
                 <WordCard 
@@ -252,15 +252,15 @@ export default function SessionScreen({ onComplete }: { onComplete: () => void }
           <button 
             onClick={() => setBrowserIndex(i => Math.min(dailyWords.length - 1, i + 1))}
             disabled={browserIndex === dailyWords.length - 1}
-            className="w-12 h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-slate-400 hover:text-indigo-600 disabled:opacity-20 transition-all active:scale-90 border border-white z-10"
+            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-slate-400 hover:text-indigo-600 disabled:opacity-10 transition-all active:scale-90 border border-white z-10 shrink-0"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>
 
       {/* Actions */}
-      <div className="mt-12 flex gap-4 h-20 px-2">
+      <div className="mt-6 sm:mt-12 flex gap-2 sm:gap-4 h-16 sm:h-20 px-1 sm:px-2 shrink-0">
         {[
           { label: t.again, q: 0, color: 'bg-white text-rose-600 border-rose-100 hover:bg-rose-50', time: '1 min' },
           { label: t.good, q: 3, color: 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-200 hover:bg-slate-800', time: '1 day', flex: 'flex-[1.5]' },
@@ -273,10 +273,10 @@ export default function SessionScreen({ onComplete }: { onComplete: () => void }
               markWordLearned(dailyWords[browserIndex], btn.q, localFavorite);
               if (browserIndex < dailyWords.length - 1) setBrowserIndex(i => i + 1);
             }}
-            className={`flex-1 ${btn.flex || ''} ${btn.color} rounded-3xl py-3 flex flex-col items-center justify-center transition-all border-2 active:scale-[0.95] disabled:opacity-40 disabled:pointer-events-none`}
+            className={`flex-1 ${btn.flex || ''} ${btn.color} rounded-2xl sm:rounded-3xl py-2 sm:py-3 flex flex-col items-center justify-center transition-all border-2 active:scale-[0.95] disabled:opacity-40 disabled:pointer-events-none`}
           >
-            <span className="text-[11px] font-black uppercase tracking-wider">{btn.label}</span>
-            <span className="text-[10px] font-bold opacity-40">{btn.time}</span>
+            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider leading-none mb-1">{btn.label}</span>
+            <span className="text-[8px] sm:text-[10px] font-bold opacity-40">{btn.time}</span>
           </button>
         ))}
       </div>
