@@ -59,11 +59,36 @@ export default async function handler(req: any, res: any) {
   } catch (error: any) {
     console.error('API ERROR:', error.message);
     
-    // Theme-aware Fallback
+    // Theme-aware Fallback (expanded to 10 words)
     const fallbacks: Record<string, any[]> = {
-      travel: [{ word: 'Itinerary', translation: 'Itinerário' }, { word: 'Expedition', translation: 'Expedição' }],
-      work: [{ word: 'Resilience', translation: 'Resiliência' }, { word: 'Prerequisite', translation: 'Pré-requisito' }],
-      school: [{ word: 'Curriculum', translation: 'Currículo' }, { word: 'Erudition', translation: 'Erudição' }]
+      travel: [
+        { word: 'Itinerary', translation: 'Itinerário' }, { word: 'Expedition', translation: 'Expedição' },
+        { word: 'Destination', translation: 'Destino' }, { word: 'Sightseeing', translation: 'Turismo' },
+        { word: 'Accommodation', translation: 'Acomodação' }, { word: 'Adventure', translation: 'Aventura' },
+        { word: 'Journey', translation: 'Jornada' }, { word: 'Passport', translation: 'Passaporte' },
+        { word: 'Landscape', translation: 'Paisagem' }, { word: 'Baggage', translation: 'Bagagem' }
+      ],
+      work: [
+        { word: 'Resilience', translation: 'Resiliência' }, { word: 'Prerequisite', translation: 'Pré-requisito' },
+        { word: 'Collaborate', translation: 'Colaborar' }, { word: 'Efficiency', translation: 'Eficiência' },
+        { word: 'Networking', translation: 'Networking' }, { word: 'Leadership', translation: 'Liderança' },
+        { word: 'Deadline', translation: 'Prazo' }, { word: 'Productivity', translation: 'Produtividade' },
+        { word: 'Innovation', translation: 'Inovação' }, { word: 'Strategy', translation: 'Estratégia' }
+      ],
+      school: [
+        { word: 'Curriculum', translation: 'Currículo' }, { word: 'Erudition', translation: 'Erudição' },
+        { word: 'Academic', translation: 'Acadêmico' }, { word: 'Knowledge', translation: 'Conhecimento' },
+        { word: 'Research', translation: 'Pesquisa' }, { word: 'Literature', translation: 'Literatura' },
+        { word: 'Scholarship', translation: 'Bolsa de estudos' }, { word: 'Assignment', translation: 'Tarefa' },
+        { word: 'University', translation: 'Universidade' }, { word: 'Graduation', translation: 'Graduação' }
+      ],
+      basics: [
+        { word: 'Conversation', translation: 'Conversa' }, { word: 'Vocabulary', translation: 'Vocabulário' },
+        { word: 'Pronunciation', translation: 'Pronúncia' }, { word: 'Grammar', translation: 'Gramática' },
+        { word: 'Understanding', translation: 'Entendimento' }, { word: 'Practice', translation: 'Prática' },
+        { word: 'Question', translation: 'Pergunta' }, { word: 'Answer', translation: 'Resposta' },
+        { word: 'Learning', translation: 'Aprendizado' }, { word: 'Exercise', translation: 'Exercício' }
+      ]
     };
 
     const selectedList = (fallbacks[theme as string] || fallbacks.work).slice(0, 10);
