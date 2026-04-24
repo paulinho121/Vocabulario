@@ -47,7 +47,7 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
           {isDailyComplete ? t.completed : t.readyToLearn}
         </h2>
         <p className="text-slate-500 text-sm font-medium mb-6">
-          {isDailyComplete ? t.congratulations : `${totalWordsToday} ${t.wordsWaiting || 'new words waiting for you. Dive deep into your learning.'}`}
+          {isDailyComplete ? t.congratulations : `${totalWordsToday} words waiting for you. Dive deep into your learning.`}
         </p>
 
         {/* Progress Bar */}
