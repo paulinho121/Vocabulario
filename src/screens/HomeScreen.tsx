@@ -1,5 +1,5 @@
 import { useStore } from '../store/useStore';
-import { Flame, CheckCircle, Languages, Play } from 'lucide-react';
+import { Flame, CheckCircle, Languages, Play, TrendingUp, Globe, Briefcase, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
 import { translations } from '../translations';
 
@@ -109,26 +109,27 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
       {/* Themes or Stats Preview */}
       <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 px-2 shrink-0">{t.themes}</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-8">
-         {[
-           { id: 'travel', label: t.travel },
-           { id: 'work', label: t.work },
-           { id: 'school', label: t.school },
-           { id: 'basics', label: t.basics }
-         ].map((theme, i) => (
-           <button 
-             key={theme.id} 
-             onClick={() => {
-                setTargetTheme(theme.id);
-                generateDailySession();
-             }}
-             className={`bg-white p-5 rounded-[24px] border-2 shadow-sm flex items-center gap-4 text-left transition-all hover:scale-[1.02] active:scale-[0.98] ${targetTheme === theme.id ? 'border-indigo-500 ring-4 ring-indigo-50' : 'border-slate-200'}`}
-           >
-             <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center ${i===0 ? 'bg-indigo-50 text-indigo-600' : i===1 ? 'bg-purple-50 text-purple-600' : i===2 ? 'bg-orange-50 text-orange-600' : 'bg-emerald-50 text-emerald-600'}`}>
-                <Languages className="w-6 h-6" />
-              </div>
-             <span className="font-bold text-slate-800 text-lg">{theme.label}</span>
-           </button>
-         ))}
+          {[
+            { id: 'business', label: 'Business', icon: <TrendingUp className="w-6 h-6" />, color: 'bg-emerald-50 text-emerald-600' },
+            { id: 'travel', label: t.travel, icon: <Globe className="w-6 h-6" />, color: 'bg-indigo-50 text-indigo-600' },
+            { id: 'work', label: t.work, icon: <Briefcase className="w-6 h-6" />, color: 'bg-purple-50 text-purple-600' },
+            { id: 'school', label: t.school, icon: <BookOpen className="w-6 h-6" />, color: 'bg-orange-50 text-orange-600' },
+            { id: 'basics', label: t.basics, icon: <Languages className="w-6 h-6" />, color: 'bg-teal-50 text-teal-600' }
+          ].map((theme) => (
+            <button 
+              key={theme.id} 
+              onClick={() => {
+                 setTargetTheme(theme.id);
+                 generateDailySession();
+              }}
+              className={`bg-white p-5 rounded-[24px] border-2 shadow-sm flex items-center gap-4 text-left transition-all hover:scale-[1.02] active:scale-[0.98] ${targetTheme === theme.id ? 'border-indigo-500 ring-4 ring-indigo-50' : 'border-slate-200'}`}
+            >
+              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center ${theme.color}`}>
+                 {theme.icon}
+               </div>
+              <span className="font-bold text-slate-800 text-lg">{theme.label}</span>
+            </button>
+          ))}
       </div>
     </div>
   );

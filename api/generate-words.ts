@@ -88,6 +88,13 @@ export default async function handler(req: any, res: any) {
         { word: 'Understanding', translation: 'Entendimento' }, { word: 'Practice', translation: 'Prática' },
         { word: 'Question', translation: 'Pergunta' }, { word: 'Answer', translation: 'Resposta' },
         { word: 'Learning', translation: 'Aprendizado' }, { word: 'Exercise', translation: 'Exercício' }
+      ],
+      business: [
+        { word: 'Stakeholder', translation: 'Parte interessada' }, { word: 'Scalability', translation: 'Escalabilidade' },
+        { word: 'Revenue', translation: 'Receita' }, { word: 'Synergy', translation: 'Sinergia' },
+        { word: 'Leverage', translation: 'Alavancagem' }, { word: 'Market-share', translation: 'Participação de mercado' },
+        { word: 'Bottom-line', translation: 'Resultado final' }, { word: 'Sustainable', translation: 'Sustentável' },
+        { word: 'Acquisition', translation: 'Aquisição' }, { word: 'Feasibility', translation: 'Viabilidade' }
       ]
     };
 
