@@ -98,9 +98,9 @@ export default function HomeScreen({ onStartSession }: { onStartSession: () => v
                 useStore.getState().resetDaily();
                 generateDailySession();
               }}
-              className="w-full bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl py-3 font-bold text-sm transition-colors border border-slate-200"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl py-4 font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-indigo-100 transition-all active:scale-[0.98]"
             >
-              {t.resetDev}
+              <Play className="w-5 h-5 fill-white" /> {t.startNewSession || "Nova Sessão"}
             </button>
           </div>
         )}

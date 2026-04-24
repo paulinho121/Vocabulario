@@ -117,6 +117,20 @@ export default function ProfileScreen() {
           )}
         </div>
       )}
+      {/* Master Reset */}
+      <div className="mt-8 pt-8 border-t border-slate-100 mb-20">
+        <button 
+          onClick={() => {
+            if (confirm("Are you sure? This will delete ALL your progress, favorites and streak.")) {
+              localStorage.removeItem('lingobite-storage');
+              window.location.reload();
+            }
+          }}
+          className="w-full py-4 text-rose-500 font-bold text-sm bg-rose-50 rounded-2xl hover:bg-rose-100 transition-all active:scale-[0.98]"
+        >
+          Reset All Progress
+        </button>
+      </div>
     </div>
   );
 }
